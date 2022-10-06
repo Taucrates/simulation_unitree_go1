@@ -35,7 +35,7 @@ To run the repository these packages, as well as its dependencies, are required 
   
   ### 2.1. Gazebo launch
   The robot spawned (unitree_go1) has a hokuyo laser and a Real Sense installed.
-  ´´´roslaunch go1_simulation go1_simulation.launch´´´
+  ```roslaunch go1_simulation go1_simulation.launch```
   
   ### 2.2. Slam launch
-  ´´´roslaunch go1_simulation slam.launch rviz:=true´´´
+  ```roslaunch go1_simulation slam.launch rviz:=true```
