@@ -1,0 +1,18 @@
+<?xml version="1.0"?>
+<robot name="go1_standalone"
+       xmlns:xacro="http://ros.org/wiki/xacro">
+
+  <!-- Defines the kobuki component tag. -->
+  <xacro:include filename="$(find go1_description)/urdf/go1.urdf" />
+
+  <!-- Hokuyo Laser -->
+  <xacro:include filename="$(find go1_description)/xacro/hokuyo.xacro"/>
+  <xacro:laser name="base_scan" parent="trunk" xyz="0.22 0 0.11" rpy="0 0 0" meshes="package://gazebo_plugins/test/multi_robot_scenario/meshes/laser"/>
+
+  <!-- Real Sense -->
+  <xacro:include filename="$(find realsense2_description)/urdf/_d435.urdf.xacro" />
+  <xacro:sensor_d435 name="camera" topics_ns="camera" parent="trunk" publish_pointcloud="true">
+    <origin xyz="0.25 0 0.08" rpy="0 0 0" />
+  </xacro:sensor_d435> 
+
+</robot>

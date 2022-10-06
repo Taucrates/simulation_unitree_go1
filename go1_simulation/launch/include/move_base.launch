@@ -1,0 +1,43 @@
+<launch>
+    <arg name="frame_prefix" default=""/>
+    <arg name="robot_name" default=""/>
+
+    <node pkg="move_base" type="move_base" respawn="false" name="move_base" output="screen">
+        <rosparam file="$(find go1_config)/config/move_base/costmap_common_params.yaml" command="load" ns="global_costmap" />
+        <rosparam file="$(find go1_config)/config/move_base/costmap_common_params.yaml" command="load" ns="local_costmap" />
+        <rosparam file="$(find go1_config)/config/move_base/local_costmap_params.yaml" command="load" />
+        <rosparam file="$(find go1_config)/config/move_base/global_costmap_params.yaml" command="load" />
+        <rosparam file="$(find go1_config)/config/move_base/base_local_planner_holonomic_params.yaml" command="load" />
+        <rosparam file="$(find go1_config)/config/move_base/move_base_params.yaml" command="load" />
+        
+        <!-- explicitly define frame ids for movebase -->
+        <!--<param name="global_costmap/global_frame"                   value="$(arg frame_prefix)map"/>
+        <param name="global_costmap/robot_base_frame"               value="$(arg frame_prefix)base_footprint"/>
+        <param name="global_costmap/2d_obstacles_layer/laser_scan/topic"  value="$(arg robot_name)scan"/>
+        <param name="global_costmap/3d_obstacles_layer/depth/topic" value="$(arg robot_name)camera/depth/points"/>
+        <param name="local_costmap/global_frame"                    value="$(arg frame_prefix)odom"/>
+        <param name="local_costmap/robot_base_frame"                value="$(arg frame_prefix)base_footprint"/>
+        <param name="local_costmap/2d_obstacles_layer/laser_scan/topic"   value="$(arg robot_name)scan"/>
+        <param name="local_costmap/3d_obstacles_layer/depth/topic"  value="$(arg robot_name)camera/depth/points"/>
+        <param name="local_costmap/2d_obstacles_layer/laser_scan/sensor_frame" value="$(arg frame_prefix)hokuyo_frame"/>
+        <param name="global_costmap/2d_obstacles_layer/laser_scan/sensor_frame" value="$(arg frame_prefix)hokuyo_frame"/>
+
+        <param name="local_costmap/2d_obstacles_layer/min_obstacle_height" value="0.0"/>
+        <param name="local_costmap/2d_obstacles_layer/max_obstacle_height" value="2.0"/> -->
+
+        <!-- <param name="local_costmap/inflation_layer/inflation_radius" value="2.0"/>  -->
+        <param name="local_costmap/obstacles_layer/laser_scan/topic" value="$(arg robot_name)/scan"/>
+        <param name="local_costmap/obstacles_layer/laser_scan/sensor_frame" value="base_scan"/>
+        <param name="local_costmap/obstacles_layer/laser_scan/inf_is_valid" value="true"/>
+
+        <param name="global_costmap/laser_scan_sensor/sensor_frame" value="base_scan"/>
+        <param name="global_costmap/laser_scan_sensor/topic" value="$(arg robot_name)/scan"/> 
+        <param name="global_costmap/obstacles_layer/laser_scan/topic" value="$(arg robot_name)/scan"/>
+        <param name="global_costmap/obstacles_layer/laser_scan/sensor_frame" value="base_scan"/>
+
+
+        <param name="global_costmap/3d_obstacles_layer/depth/topic" value="$(arg robot_name)/camera/depth/color/points"/>
+        <param name="local_costmap/3d_obstacles_layer/depth/topic"  value="$(arg robot_name)/camera/depth/color/points"/>
+
+    </node>
+</launch>
