@@ -1,4 +1,4 @@
-
+This package is part of the champ repository.
 ## 1. Quick Start
 
 You don't need a physical robot to run the following demos. 
