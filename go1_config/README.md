@@ -1,4 +1,4 @@
-This package is part of the champ repository.
+This package is part of the [champ](https://github.com/chvmp/robots/tree/master/configs/go1_config) repository.
 ## 1. Quick Start
 
 You don't need a physical robot to run the following demos. 
